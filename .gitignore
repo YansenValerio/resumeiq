@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Testing
+coverage/
+.nyc_output
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Production
+*.production
+
+# Environment Variables (PENTING: jangan commit!)
+.env
+.env*.local
+.env.production
+.env.development
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Misc
+.turbo
+.cache
+
+# Testing artifacts
+playwright-report/
+test-results/
+
+# Skills (kalau ada local copy)
+.claude/
