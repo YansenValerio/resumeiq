@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import * as Sentry from "@sentry/nextjs";
 import { parseResume, type ParseError } from "@/lib/parser";
 
 export async function POST(request: NextRequest) {
@@ -46,6 +47,7 @@ export async function POST(request: NextRequest) {
     }
 
     console.error("Parse API error:", error);
+    Sentry.captureException(error, { tags: { route: "api/parse" } });
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }

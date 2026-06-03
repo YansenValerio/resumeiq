@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import * as Sentry from "@sentry/nextjs";
 import { analyzeResume, truncateForAnalysis } from "@/lib/gemini";
 import { detectLanguage } from "@/lib/parser";
 import { checkRateLimit } from "@/lib/rate-limit";
@@ -107,6 +108,7 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Analysis API error:", error);
+    Sentry.captureException(error, { tags: { route: "api/analyze" } });
 
     const message =
       error instanceof Error ? error.message : "Internal server error";

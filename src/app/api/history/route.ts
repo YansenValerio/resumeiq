@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase-server";
 import { NextRequest, NextResponse } from "next/server";
+import * as Sentry from "@sentry/nextjs";
 import { z } from "zod";
 
 // ─── GET /api/history ─────────────────────────────────────────────────────────
@@ -31,6 +32,7 @@ export async function GET(request: NextRequest) {
     .range(offset, offset + limit - 1);
 
   if (error) {
+    Sentry.captureException(error, { tags: { route: "api/history", op: "list" } });
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
@@ -153,6 +155,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("Save analysis error:", error.message);
+    Sentry.captureException(error, { tags: { route: "api/history", op: "save" } });
     return NextResponse.json(
       { saved: false, error: error.message },
       { status: 500 }
