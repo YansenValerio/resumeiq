@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { AuthProvider } from '@/components/AuthProvider'
+import { Analytics } from '@vercel/analytics/react'
 import './globals.css'
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://resumeiq.vercel.app'
@@ -46,6 +47,7 @@ export default function RootLayout({
         className={`${GeistSans.variable} ${GeistMono.variable} bg-white text-slate-900 selection:bg-brand-200 selection:text-brand-900`}
       >
         <AuthProvider>{children}</AuthProvider>
+        <Analytics />
       </body>
     </html>
   )
