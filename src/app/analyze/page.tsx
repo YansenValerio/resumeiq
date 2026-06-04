@@ -32,6 +32,34 @@ const ALLOWED_TYPES = [
 ]
 const JD_DRAFT_KEY = 'resumeiq.jd.draft'
 
+const SAMPLE_CV = `SARAH WIJAYA
+Senior Product Designer · Jakarta, Indonesia
+sarah.wijaya@email.com · +62 812-3456-7890 · linkedin.com/in/sarahwijaya · sarahwijaya.design
+
+SUMMARY
+Product Designer dengan 5 tahun pengalaman merancang produk B2B SaaS dan tools berbasis data. Fokus pada design system, riset pengguna, dan kolaborasi lintas tim. Memimpin redesign yang meningkatkan activation rate sebesar 32%.
+
+EXPERIENCE
+Senior Product Designer — Kredivo (2022 – Sekarang)
+• Memimpin desain end-to-end untuk modul analytics dashboard yang dipakai 12.000+ merchant enterprise.
+• Membangun dan memelihara design system di Figma bersama 8 engineer, mengurangi waktu handoff 40%.
+• Menjalankan 30+ sesi user interview dan usability testing dengan pelanggan enterprise.
+• Bermitra dengan tim Product, Engineering, dan Data Science pada inisiatif cross-functional.
+
+Product Designer — Tokopedia (2019 – 2022)
+• Mendesain ulang alur checkout untuk fitur seller, menaikkan konversi 18%.
+• Menerapkan A/B testing pada landing page, meningkatkan sign-up 24%.
+• Mentoring 2 desainer junior dan berkontribusi pada budaya desain tim.
+
+SKILLS
+Figma, Prototyping, Design Tokens, Design Systems, User Research, Usability Testing, A/B Testing, SQL (dasar), HTML/CSS, Stakeholder Management, Agile.
+
+EDUCATION
+S1 Desain Komunikasi Visual — Universitas Indonesia (2015 – 2019), IPK 3.78
+
+LANGUAGES
+Bahasa Indonesia (native), English (fluent — working proficiency).`
+
 const SAMPLE_JD = `Senior Product Designer · TechCorp Indonesia (Hybrid · Jakarta)
 
 About the role:
@@ -325,8 +353,8 @@ export default function AnalyzePage() {
     setParseResult(null)
     setTimeout(() => {
       setParseResult({
-        text: 'Sample resume text for demonstration purposes.',
-        wordCount: 487,
+        text: SAMPLE_CV,
+        wordCount: SAMPLE_CV.trim().split(/\s+/).length,
         pageCount: 2,
         detectedLang: 'id',
       })
